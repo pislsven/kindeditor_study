@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/kindeditor/themes/simple/simple.css">
+    <script src="/static/kindeditor/kindeditor-all-min.js"></script>
+    <script src="/static/kindeditor/lang/zh-CN.js"></script>
+    <title>自定义hello插件</title>
+    <style>
+        .ke-icon-hello {
+            background-image: url("/static/img/hello.png");
+            /* background-image: url("/static/kindeditor/themes/default/default.png"); */
+            /* border-image:  url("/static/img/hello.png"); */
+
+            background-position: 0px -672px;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+    <script>
+        KindEditor.lang({
+            hello: '你好'       // 图标栏会有提示
+        })
+        KindEditor.ready(function (K) {
+            window.editor = K.create('textarea[name="default_edit"]', {
+                pluginsPath: './plugins/',
+                items: ['hello']
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>default editor</h1>
+    <textarea name="default_edit" style="width: 100%"></textarea>
+</body>
+
+</html>

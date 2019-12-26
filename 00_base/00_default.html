@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="/static/kindeditor/themes/default/default.css"> -->
+    <link rel="stylesheet" href="/static/kindeditor/themes/simple/simple.css">
+    <script src="/static/kindeditor/kindeditor-all-min.js"></script>
+    <script src="/static/kindeditor/lang/zh-CN.js"></script>
+    <title>Document</title>
+    <script>
+        KindEditor.ready(function(K){
+            window.editor = K.create('textarea[name="default_edit"]',{
+                // fullscreenMode: true,  // 全屏
+                // themeType : 'simple'       // 简单风格
+                autoHeightMode: true,    // 自动调节高度 在引入 autoheight插件时有效
+                afterCreate: function(){
+                    // 不能采用箭头函数，箭头函数获取不到 this editor， 只能获取到 this window
+                    this.loadPlugin('autoheight')
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>default editor</h1>
+    <textarea name="default_edit" style="width: 100%"></textarea>
+</body>
+</html>

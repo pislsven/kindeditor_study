@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/kindeditor/themes/default/default.css">
+    <script src="/static/kindeditor/kindeditor-all-min.js"></script>
+    <script src="/static/kindeditor/lang/zh-CN.js"></script>
+    <title>单独上传功能</title>
+    <script>
+        KindEditor.ready(function (K) {
+            const uploadbutton = K.uploadbutton({
+                button: K('#upload_bt')[0],
+                fieldName: 'imgFile',
+                url: 'http://127.0.0.1:5500/test',
+                afterUpload: function (data) {
+                    if (data.error === 0) {
+                        alert(data.url);
+                    } else {
+                        alert(data.message);
+                    }                    
+                }
+            })
+            uploadbutton.fileBox.change(function(e){
+                
+                // 模拟成功失败均有图片
+                const img = document.querySelector("#img")
+                img.setAttribute("src", '/static/img/butinghua.gif')
+
+                uploadbutton.submit();
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>upload</h1>
+    <hr>
+    <div>
+        <img id="img" src="" alt="请选择上传图片" style="height: 100%" border="1">
+        <input id="imgsrc" value="">
+        <!-- <button type="button" id="upload_bt" value="upload_bt"></button> -->
+        <input type="button" id="upload_bt" value="uploadBT">
+    </div>
+</body>
+
+</html>
